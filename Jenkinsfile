@@ -112,7 +112,6 @@ pipeline {
         success{
             sh "echo 'success'"
             sh "chmod 777 ../success.sh"
-            sh "pwd"
             sh "../success.sh"
         }
         always {
@@ -120,6 +119,7 @@ pipeline {
             // sh "sudo docker stop testdocker"
             // sh "sudo docker rm testdocker"
             sh "pwd"
+            sh "ls -a"
             sh "chmod 777 ../always.sh"
             sh "../always.sh"
         }
