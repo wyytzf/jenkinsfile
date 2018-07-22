@@ -21,6 +21,10 @@ pipeline {
                             ])
                             //sh "git pull ${params.user_answer_repo}"
                             sh "ls -a"
+                            sh "echo '*******'"
+                            sh "ls ../ -a"
+                            sh "echo '*******'"
+                            sh "ls ../../ -a"
                             sh "../TEST2/build-homework.sh"
                             sh "echo '****************************'"
                             } catch (e) {
