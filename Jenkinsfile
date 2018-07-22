@@ -14,7 +14,7 @@ pipeline {
                 sh "pwd"
                 script {
                 dir('homework-master') {
-                    try{
+                    try {
                         checkout([
                             $class: 'GitSCM',
                             branches: [[name: "${params.branch}"]],
@@ -24,7 +24,7 @@ pipeline {
                         sh "ls -a"
                         sh "../ADD-SINGLE-STACK-PROGRAMMING-QUIZ-SUBMISSION/build-homework.sh"
                         sh "echo '****************************'"
-                        } catch (e){
+                        } catch (e) {
                             env.LOCAL_ERROR = 'error in checkout homework master'
                             error(env.LOCAL_ERROR)
                         }
@@ -36,13 +36,13 @@ pipeline {
             steps {
                 script {
                     dir('homework-master') {
-                        try{
+                        try {
                             // sh "curl ${params.answer_path} -o answer.zip"
                             // sh "unzip -o answer.zip -d answer"
                             // sh "sudo cp -f ./src/* ./answer/src"
                             sh "ls -a"
                             sh "./build-answer.sh"
-                        }catch(e){
+                        } catch(e) {
                             env.LOCAL_ERROR = 'error in tar answer.zip'
                             error(env.LOCAL_ERROR)
                         }
@@ -54,14 +54,14 @@ pipeline {
             steps {
                 script {
                     dir('homework-master') {
-                        try{
+                        try {
                             // sh "sudo docker run --tty --name testdocker --detach ${params.image}"
                             // sh "sudo docker ps -a"
                             // sh "sudo docker cp ./answer testdocker:/var/test_directory"
                             // sh "sudo docker exec -i testdocker /bin/sh -c 'ls /var/test_directory'"
                             sh "ls -a"
                             sh "./build-image.sh"
-                        }catch(e){
+                        } catch(e) {
                             env.LOCAL_ERROR = 'error in pull image'
                             error(env.LOCAL_ERROR)
                         }
@@ -72,14 +72,14 @@ pipeline {
         stage('run script') {
             steps {
                 dir('homework-master') {
-                try{
+                try {
                     // sh "echo script"
                     // sh "sudo docker exec -i testdocker /bin/sh -c 'chmod 777 /var/test_directory/script.sh'"
                     // // image may not have bash!
                     // sh "sudo docker exec -i testdocker /bin/sh -c '/var/test_directory/script.sh'"
                     sh "ls -a"
                     sh "./run.sh"
-                    }catch(e){
+                    } catch(e) {
                         env.LOCAL_ERROR = 'error in checkout run script'
                         error(env.LOCAL_ERROR)
                     }
