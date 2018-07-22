@@ -107,12 +107,12 @@ pipeline {
             sh "echo 'failure'"
             sh "LOCAL_ERROR:$LOCAL_ERROR"           
             sh "chmod 777 ../failure.sh"
-            sh "../failure.sh"
+            sh "./failure.sh"
         }
         success{
             sh "echo 'success'"
             sh "chmod 777 ../success.sh"
-            sh "../success.sh"
+            sh "./success.sh"
         }
         always {
             sh "echo always"
@@ -121,7 +121,7 @@ pipeline {
             sh "pwd"
             sh "ls -a"
             sh "chmod 777 ../always.sh"
-            sh "../always.sh"
+            sh "./always.sh"
         }
     }
 }
