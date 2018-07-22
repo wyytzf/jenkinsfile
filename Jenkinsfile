@@ -70,17 +70,19 @@ pipeline {
         }
         stage('run script') {
             steps {
-                dir('homework-master') {
-                try {
-                    // sh "echo script"
-                    // sh "sudo docker exec -i testdocker /bin/sh -c 'chmod 777 /var/test_directory/script.sh'"
-                    // // image may not have bash!
-                    // sh "sudo docker exec -i testdocker /bin/sh -c '/var/test_directory/script.sh'"
-                    sh "ls -a"
-                    sh "./run.sh"
-                    } catch(e) {
-                        env.LOCAL_ERROR = 'error in checkout run script'
-                        error(env.LOCAL_ERROR)
+                script{
+                    dir('homework-master') {
+                    try {
+                        // sh "echo script"
+                        // sh "sudo docker exec -i testdocker /bin/sh -c 'chmod 777 /var/test_directory/script.sh'"
+                        // // image may not have bash!
+                        // sh "sudo docker exec -i testdocker /bin/sh -c '/var/test_directory/script.sh'"
+                        sh "ls -a"
+                        sh "./run.sh"
+                        } catch(e) {
+                            env.LOCAL_ERROR = 'error in checkout run script'
+                            error(env.LOCAL_ERROR)
+                        }
                     }
                 }
             }
