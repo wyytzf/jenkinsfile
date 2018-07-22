@@ -20,13 +20,8 @@ pipeline {
                                 userRemoteConfigs: [[url: "${params.user_answer_repo}"]]
                             ])
                             //sh "git pull ${params.user_answer_repo}"
-                            sh "ls -a"
-                            sh "echo '*******'"
-                            sh "ls ../ -a"
-                            sh "echo '*******'"
-                            sh "ls ../../ -a"
+                            sh "sudo chmod 777 ../build-homework.sh"
                             sh "../build-homework.sh"
-                            sh "echo '****************************'"
                             } catch (e) {
                                 env.LOCAL_ERROR = 'error in checkout homework master'
                                 error(env.LOCAL_ERROR)
@@ -44,6 +39,7 @@ pipeline {
                             // sh "unzip -o answer.zip -d answer"
                             // sh "sudo cp -f ./src/* ./answer/src"
                             sh "ls -a"
+                            sh "sudo chmod 777 ../build-answer.sh"
                             sh "../build-answer.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in tar answer.zip'
