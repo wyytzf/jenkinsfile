@@ -21,7 +21,7 @@ pipeline {
                             ])
                             //sh "git pull ${params.user_answer_repo}"
                             sh "ls -a"
-                            sh "../ADD-SINGLE-STACK-PROGRAMMING-QUIZ-SUBMISSION/build-homework.sh"
+                            sh "../TEST2/build-homework.sh"
                             sh "echo '****************************'"
                             } catch (e) {
                                 env.LOCAL_ERROR = 'error in checkout homework master'
