@@ -1,2 +1,2 @@
 #!/bin/sh
-git pull ${params.user_answer_repo}
+git pull $params.user_answer_repo
