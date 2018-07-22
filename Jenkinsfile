@@ -11,9 +11,8 @@ pipeline {
     stages {
         stage('checkout homework master') {
             steps {
-                sh "pwd"
-                dir('homework-master') {
-                    script {
+                script {
+                dir('homework-master') {  
                         try {
                             checkout([
                                 $class: 'GitSCM',
