@@ -59,6 +59,7 @@ pipeline {
                             // sh "sudo docker cp ./answer testdocker:/var/test_directory"
                             // sh "sudo docker exec -i testdocker /bin/sh -c 'ls /var/test_directory'"
                             sh "ls -a"
+                            sh "sudo chmod 777 ../build-image.sh"
                             sh "../build-image.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in pull image'
@@ -78,6 +79,7 @@ pipeline {
                         // // image may not have bash!
                         // sh "sudo docker exec -i testdocker /bin/sh -c '/var/test_directory/script.sh'"
                         sh "ls -a"
+                        sh "sudo chmod 777 ../run.sh"
                         sh "../run.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in checkout run script'
@@ -92,7 +94,7 @@ pipeline {
                 dir('homework-master') {
                     sh "echo clear"
                     sh "pwd"
-                    sh "rm -rf *"
+                    // sh "rm -rf *"
                     // sh "sudo docker stop testdocker"
                     // sh "sudo docker rm testdocker"
                 }
@@ -104,16 +106,19 @@ pipeline {
         failure{
             sh "echo 'failure'"
             sh "LOCAL_ERROR:$LOCAL_ERROR"
+            sh "chmod 777 ../failure.sh"
             sh "../failure.sh"
         }
         success{
             sh "echo 'success'"
+            sh "chmod 777 ../success.sh"
             sh "../success.sh"
         }
         always {
             sh "echo always"
             // sh "sudo docker stop testdocker"
             // sh "sudo docker rm testdocker"
+            sh "chmod 777 ../always.sh"
             sh "../always.sh"
         }
     }
