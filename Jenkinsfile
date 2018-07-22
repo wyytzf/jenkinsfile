@@ -104,8 +104,7 @@ pipeline {
 
     post {
         failure{
-            sh "echo 'failure'"
-            sh "LOCAL_ERROR:$env.LOCAL_ERROR"           
+            sh "echo 'failure'"        
             sh "chmod 777 ./failure.sh"
             sh "./failure.sh"
         }
