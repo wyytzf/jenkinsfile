@@ -2,5 +2,5 @@
 
 curl -X POST \
     -F "status=5" \
-    -F "msg=$LOCAL_ERROR" \
+    -F "msg=$env.LOCAL_ERROR" \
     $callback_url
