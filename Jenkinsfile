@@ -106,12 +106,12 @@ pipeline {
         failure{
             sh "echo 'failure'"
             sh "LOCAL_ERROR:$LOCAL_ERROR"           
-            sh "chmod 777 ../failure.sh"
+            sh "chmod 777 ./failure.sh"
             sh "./failure.sh"
         }
         success{
             sh "echo 'success'"
-            sh "chmod 777 ../success.sh"
+            sh "chmod 777 ./success.sh"
             sh "./success.sh"
         }
         always {
@@ -120,7 +120,7 @@ pipeline {
             // sh "sudo docker rm testdocker"
             sh "pwd"
             sh "ls -a"
-            sh "chmod 777 ../always.sh"
+            sh "chmod 777 ./always.sh"
             sh "./always.sh"
         }
     }
