@@ -105,19 +105,21 @@ pipeline {
     post {
         failure{
             sh "echo 'failure'"
-            sh "LOCAL_ERROR:$LOCAL_ERROR"
+            sh "LOCAL_ERROR:$LOCAL_ERROR"           
             sh "chmod 777 ../failure.sh"
             sh "../failure.sh"
         }
         success{
             sh "echo 'success'"
             sh "chmod 777 ../success.sh"
+            sh "pwd"
             sh "../success.sh"
         }
         always {
             sh "echo always"
             // sh "sudo docker stop testdocker"
             // sh "sudo docker rm testdocker"
+            sh "pwd"
             sh "chmod 777 ../always.sh"
             sh "../always.sh"
         }
