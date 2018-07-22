@@ -25,7 +25,7 @@ pipeline {
                             sh "ls ../ -a"
                             sh "echo '*******'"
                             sh "ls ../../ -a"
-                            sh "sudo ../build-homework.sh"
+                            sh "../build-homework.sh"
                             sh "echo '****************************'"
                             } catch (e) {
                                 env.LOCAL_ERROR = 'error in checkout homework master'
@@ -44,7 +44,7 @@ pipeline {
                             // sh "unzip -o answer.zip -d answer"
                             // sh "sudo cp -f ./src/* ./answer/src"
                             sh "ls -a"
-                            sh "sudo ../build-answer.sh"
+                            sh "../build-answer.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in tar answer.zip'
                             error(env.LOCAL_ERROR)
@@ -63,7 +63,7 @@ pipeline {
                             // sh "sudo docker cp ./answer testdocker:/var/test_directory"
                             // sh "sudo docker exec -i testdocker /bin/sh -c 'ls /var/test_directory'"
                             sh "ls -a"
-                            sh "sudo ../build-image.sh"
+                            sh "../build-image.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in pull image'
                             error(env.LOCAL_ERROR)
@@ -82,7 +82,7 @@ pipeline {
                         // // image may not have bash!
                         // sh "sudo docker exec -i testdocker /bin/sh -c '/var/test_directory/script.sh'"
                         sh "ls -a"
-                        sh "sudo ../run.sh"
+                        sh "../run.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in checkout run script'
                             error(env.LOCAL_ERROR)
@@ -108,17 +108,17 @@ pipeline {
         failure{
             sh "echo 'failure'"
             sh "LOCAL_ERROR:$LOCAL_ERROR"
-            sh "sudo ../failure.sh"
+            sh "../failure.sh"
         }
         success{
             sh "echo 'success'"
-            sh "sudo ../success.sh"
+            sh "../success.sh"
         }
         always {
             sh "echo always"
             // sh "sudo docker stop testdocker"
             // sh "sudo docker rm testdocker"
-            sh "sudo ../always.sh"
+            sh "../always.sh"
         }
     }
 }
