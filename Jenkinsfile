@@ -12,7 +12,7 @@ pipeline {
         stage('checkout homework master') {
             steps {
                 script {
-                sh "sed '1c #!/bin/sh' script.sh"
+                
                 dir('homework-master') {  
                         try {
                             checkout([
