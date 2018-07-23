@@ -20,10 +20,10 @@ pipeline {
                                 userRemoteConfigs: [[url: "${params.user_answer_repo}"]]
                             ])
                             //sh "git pull ${params.user_answer_repo}"
-                            sh "ls -al"
-                            sh "echo *********"
-                            sh "ls -al ../"
-                            sh "sudo chmod 777 ../build-homework.sh"
+                            //sh "ls -al"
+                            //sh "echo *********"
+                            //sh "ls -al ../"
+                            sh "sudo chmod -R 777 ../"
                             sh "../build-homework.sh"
                             } catch (e) {
                                 env.LOCAL_ERROR = 'error in checkout homework master'
@@ -42,7 +42,7 @@ pipeline {
                             // sh "unzip -o answer.zip -d answer"
                             // sh "sudo cp -f ./src/* ./answer/src"
                             sh "ls -a"
-                            sh "sudo chmod 777 ../build-answer.sh"
+                            //sh "sudo chmod 777 ../build-answer.sh"
                             sh "../build-answer.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in tar answer.zip'
@@ -62,7 +62,7 @@ pipeline {
                             // sh "sudo docker cp ./answer testdocker:/var/test_directory"
                             // sh "sudo docker exec -i testdocker /bin/sh -c 'ls /var/test_directory'"
                             sh "ls -a"
-                            sh "sudo chmod 777 ../build-image.sh"
+                            //sh "sudo chmod 777 ../build-image.sh"
                             sh "../build-image.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in pull image'
@@ -82,7 +82,7 @@ pipeline {
                         // // image may not have bash!
                         // sh "sudo docker exec -i testdocker /bin/sh -c '/var/test_directory/script.sh'"
                         sh "ls -a"
-                        sh "sudo chmod 777 ../run.sh"
+                        //sh "sudo chmod 777 ../run.sh"
                         sh "../run.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in checkout run script'
@@ -108,12 +108,12 @@ pipeline {
     post {
         failure{
             sh "echo 'failure'"        
-            sh "chmod 777 ./failure.sh"
+            //sh "chmod 777 ./failure.sh"
             sh "./failure.sh"
         }
         success{
             sh "echo 'success'"
-            sh "chmod 777 ./success.sh"
+            //sh "chmod 777 ./success.sh"
             sh "./success.sh"
         }
         always {
@@ -122,7 +122,7 @@ pipeline {
             // sh "sudo docker rm testdocker"
             sh "pwd"
             sh "ls -a"
-            sh "chmod 777 ./always.sh"
+            //sh "chmod 777 ./always.sh"
             sh "./always.sh"
         }
     }
