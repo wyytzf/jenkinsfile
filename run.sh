@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo docker exec -i testdocker /bin/sh -c '/var/test_directory/script.sh'
+sudo docker exec -i testdocker /bin/sh -c 'cd /var/test_directory/ && ./script.sh'
