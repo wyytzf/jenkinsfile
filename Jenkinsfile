@@ -25,7 +25,7 @@ pipeline {
                             //sh "ls -al ../"
                             sh "sudo chmod -R 777 ../"
                             sh "../build-homework.sh"
-                            } catch (e) {
+                            } catch (e) {                              
                                 env.LOCAL_ERROR = 'error in checkout homework master'
                                 error(env.LOCAL_ERROR)
                             }
@@ -85,6 +85,7 @@ pipeline {
                         //sh "sudo chmod 777 ../run.sh"
                         sh "../run.sh"
                         } catch(e) {
+                            sh "$e.message"
                             env.LOCAL_ERROR = 'error in checkout run script'
                             error(env.LOCAL_ERROR)
                         }
