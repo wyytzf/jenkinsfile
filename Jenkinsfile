@@ -20,6 +20,9 @@ pipeline {
                                 userRemoteConfigs: [[url: "${params.user_answer_repo}"]]
                             ])
                             //sh "git pull ${params.user_answer_repo}"
+                            sh "ls -al"
+                            sh "echo *********"
+                            sh "ls -al ../"
                             sh "sudo chmod 777 ../build-homework.sh"
                             sh "../build-homework.sh"
                             } catch (e) {
