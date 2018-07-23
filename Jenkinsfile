@@ -112,13 +112,13 @@ pipeline {
             sh "echo 'failure'"        
             //sh "chmod 777 ./failure.sh"
             sh "./failure.sh"
-            deleteDir()
+            //deleteDir()
         }
         success{
             sh "echo 'success'"
             //sh "chmod 777 ./success.sh"
             sh "./success.sh"
-            deleteDir()
+            //deleteDir()
         }
         always {
             sh "echo always"
