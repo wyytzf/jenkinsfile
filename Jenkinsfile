@@ -85,7 +85,7 @@ pipeline {
                         //sh "sudo chmod 777 ../run.sh"
                         sh "../run.sh"
                         } catch(e) {
-                            sh "catch error e.message: $e.message"
+                            //sh "catch error e.message: $e.message"
                             env.LOCAL_ERROR = "error in checkout run script. origin message is"
                             error(env.LOCAL_ERROR)
                         }
