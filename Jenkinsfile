@@ -118,8 +118,8 @@ pipeline {
             //sh "chmod 777 ./success.sh"
             sh "./success.sh"
         }
-        always {
-            sh "echo always"
+        cleanup {
+            sh "echo cleanup"
             // sh "sudo docker stop testdocker"
             // sh "sudo docker rm testdocker"
             sh "pwd"
