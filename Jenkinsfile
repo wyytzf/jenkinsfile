@@ -121,7 +121,7 @@ pipeline {
             deleteDir()
         }
         always {
-            //sh "echo always"
+            sh "echo always"
             // sh "sudo docker stop testdocker"
             // sh "sudo docker rm testdocker"
             //sh "pwd"
