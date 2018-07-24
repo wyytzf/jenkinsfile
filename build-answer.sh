@@ -8,7 +8,7 @@ sudo chmod 777 ./answer/script.sh
 # 不同技术栈执行不同方法
 sudo cp -f ./src/* ./answer/src
 echo "if begin"
-if [[ $image == *"node"* ]]
+if [[ $image =~ "node" ]]
 then
   echo "node"
 else
