@@ -1,6 +1,7 @@
 #!/bin/sh
 echo $env.LOCAL_ERROR
 echo $callback_url
+pwd
 job_msg=cat /homework-master/script_temp
 cat /homework-master/script_temp
 curl -X POST \
