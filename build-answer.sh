@@ -10,6 +10,8 @@ sudo cp -f ./src/* ./answer/src
 if [[ $image == *"node"* ]]
 then
   echo "node"
+else
+  echo "$image"
 fi
 if [[ $image == *"java"* ]]
 then
