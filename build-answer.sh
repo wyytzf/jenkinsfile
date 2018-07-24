@@ -7,11 +7,11 @@ mv ./answer/script.sh.tmp ./answer/script.sh
 sudo chmod 777 ./answer/script.sh
 # 不同技术栈执行不同方法
 sudo cp -f ./src/* ./answer/src
-if [[$image == *"node"*]]
+if [[ $image == *"node"* ]]
 then
   echo "node"
 fi
-if [[$image == *"java"*]]
+if [[ $image == *"java"* ]]
 then
   echo "java"
 fi
