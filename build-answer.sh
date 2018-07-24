@@ -7,8 +7,8 @@ mv ./answer/script.sh.tmp ./answer/script.sh
 sudo chmod 777 ./answer/script.sh
 # 不同技术栈执行不同方法
 sudo cp -f ./src/* ./answer/src
-echo "if begin"
 result=$(echo $image | grep "node")
+echo "$result"
 if [[ $result != "" ]]
 then
   echo "node"
