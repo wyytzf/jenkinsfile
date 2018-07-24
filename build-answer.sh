@@ -6,17 +6,16 @@ sed '1c #!/bin/sh' ./answer/script.sh > ./answer/script.sh.tmp
 mv ./answer/script.sh.tmp ./answer/script.sh
 sudo chmod 777 ./answer/script.sh
 # 不同技术栈执行不同方法
-sudo cp -f ./src/* ./answer/src
 if [[ $(echo $image | grep "node") != "" ]]
 then
-  echo "node"
+  sudo cp -f ./src/* ./answer/src
 else
-  echo "$image"
+  echo "not node"
 fi
 if [[ $(echo $image | grep "java") != "" ]]
 then
   echo "java"
 else
-  echo "$image"
+  echo "not java"
 fi
 
