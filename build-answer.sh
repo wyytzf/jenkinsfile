@@ -7,15 +7,16 @@ mv ./answer/script.sh.tmp ./answer/script.sh
 sudo chmod 777 ./answer/script.sh
 # 不同技术栈执行不同方法
 sudo cp -f ./src/* ./answer/src
-result=$(echo $image | grep "node")
-echo "$result"
-if [[ $result != "" ]]
+if [[ $(echo $image | grep "node") != "" ]]
 then
   echo "node"
 else
   echo "$image"
 fi
-if [[ $image == *"java"* ]]
+if [[ $(echo $image | grep "java") != "" ]]
 then
   echo "java"
+else
+  echo "$image"
 fi
+
