@@ -65,6 +65,7 @@ pipeline {
                         sh "../run.sh"
                         } catch(e) {
                             //sh "catch error e.message: $e.message"
+                            echo "$e"
                             env.LOCAL_ERROR = "error in run script."
                             error(env.LOCAL_ERROR)
                         }
