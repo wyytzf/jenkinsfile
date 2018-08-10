@@ -12,7 +12,7 @@ pipeline {
         stage('checkout homework master') {
             steps {
                 script {
-                dir('homework-master') {
+                dir("${JOB_NAME}_${BUILD_NUMBER}") {
                         try {
                             checkout([
                                 $class: 'GitSCM',
@@ -32,7 +32,7 @@ pipeline {
         stage('tar answer.zip') {
             steps {
                 script {
-                    dir('homework-master') {
+                    dir("${JOB_NAME}_${BUILD_NUMBER}") {
                         try {
                             sh "../build-answer.sh"
                         } catch(e) {
@@ -46,7 +46,7 @@ pipeline {
         stage('pull image') {
             steps {
                 script {
-                    dir('homework-master') {
+                    dir("${JOB_NAME}_${BUILD_NUMBER}") {
                         try {
                             sh "../build-image.sh"
                         } catch(e) {
@@ -60,7 +60,7 @@ pipeline {
         stage('run script') {
             steps {
                 script{
-                    dir('homework-master') {
+                    dir("${JOB_NAME}_${BUILD_NUMBER}") {
                     try {
                         sh "../run.sh"
                         } catch(e) {
@@ -79,12 +79,12 @@ pipeline {
         failure{
             sh "echo 'failure'"
             sh "./failure.sh"
-            sh "./cleanup.sh"
+            //sh "./cleanup.sh"
         }
         success{
             sh "echo 'success'"
             sh "./success.sh"
-            sh "./cleanup.sh"
+            //sh "./cleanup.sh"
         }
     }
 }
