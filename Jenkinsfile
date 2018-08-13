@@ -20,7 +20,7 @@ pipeline {
                                 userRemoteConfigs: [[url: "${params.user_answer_repo}"]]
                             ])
                             sh "sudo chmod -R 777 ../"
-                            sh "../build-homework.sh"
+                            sh "../ADD-SINGLE-STACK-PROGRAMMING-QUIZ-SUBMISSION/build-homework.sh"
                             } catch (e) {
                                 env.LOCAL_ERROR = 'error in checkout homework master'
                                 error(env.LOCAL_ERROR)
@@ -34,7 +34,7 @@ pipeline {
                 script {
                     dir("${JOB_NAME}_${BUILD_NUMBER}") {
                         try {
-                            sh "../build-answer.sh"
+                            sh "../ADD-SINGLE-STACK-PROGRAMMING-QUIZ-SUBMISSION/build-answer.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in tar answer.zip'
                             error(env.LOCAL_ERROR)
@@ -48,7 +48,7 @@ pipeline {
                 script {
                     dir("${JOB_NAME}_${BUILD_NUMBER}") {
                         try {
-                            sh "../build-image.sh"
+                            sh "../ADD-SINGLE-STACK-PROGRAMMING-QUIZ-SUBMISSION/build-image.sh"
                         } catch(e) {
                             env.LOCAL_ERROR = 'error in pull image'
                             error(env.LOCAL_ERROR)
@@ -62,7 +62,7 @@ pipeline {
                 script{
                     dir("${JOB_NAME}_${BUILD_NUMBER}") {
                     try {
-                        sh "../run.sh"
+                        sh "../ADD-SINGLE-STACK-PROGRAMMING-QUIZ-SUBMISSION/run.sh"
                         } catch(e) {
                             //sh "catch error e.message: $e.message"
                             echo "$e"
@@ -78,13 +78,13 @@ pipeline {
     post {
         failure{
             sh "echo 'failure'"
-            sh "./failure.sh"
-            sh "./cleanup.sh"
+            sh "./ADD-SINGLE-STACK-PROGRAMMING-QUIZ-SUBMISSION/failure.sh"
+            sh "./ADD-SINGLE-STACK-PROGRAMMING-QUIZ-SUBMISSION/cleanup.sh"
         }
         success{
             sh "echo 'success'"
-            sh "./success.sh"
-            sh "./cleanup.sh"
+            sh "./ADD-SINGLE-STACK-PROGRAMMING-QUIZ-SUBMISSION/success.sh"
+            sh "./ADD-SINGLE-STACK-PROGRAMMING-QUIZ-SUBMISSION/cleanup.sh"
         }
     }
 }
