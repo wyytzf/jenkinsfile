@@ -12,6 +12,7 @@ then
   echo "In order to be compatible with the old version, please write 'rm -rf spec \n mv ./__answerBranch/spec ./spec' in your script file"
   sudo cp -rf ./ ../answer_temp
   sudo cp -rf ../answer_temp ./answer
+  sudo cp -rf ./__answerBranch ./script.sh
 else
   echo "not node"
 fi
